@@ -2,6 +2,13 @@
 
 This project demonstrates the application of Physics-Informed Neural Networks (PINNs) to predict the temporal evolution of plasma temperature profiles in tokamak fusion devices. The model combines data-driven learning with physical constraints from plasma transport equations.
 
+## Takeaway
+Why does temperature profile mismatch with ground truth more in the first 5% of time?
+- Look into the boundary condition (initial). Maybe the boudary condition is not defined aligning with the simulated/collected data. This could be resulting from the following issue of a boundary condition tha cannot generalise to new data.
+- If you define/learn different boundary conditions every time you train the model with another set of data, the boundary condition is not generalisable and this affects the generalisability to drifted data distribution
+Other spots for quick check:
+- In the loss function, is the PDE loss or boundary condition loss with too small a weight.
+
 ## Overview
 
 The project implements a PINN to learn and predict the spatio-temporal evolution of plasma temperature, constrained by the heat diffusion equation:
